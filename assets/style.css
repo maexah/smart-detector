@@ -159,6 +159,7 @@ body {
     }
     @media (max-width: 820px) {
       .grid { grid-template-columns: 1fr; }
+      .tiny.kbd-tip { display: none; }
     }
 
     .readout {
