@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Detector</title>
+  <meta name="description" content="Automatically detects the presence of smart. (It won't.)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#0b0f14" />
+
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>Smart Detector</h1>
+        <p>Automatically detects the presence of smart. (It won’t.)</p>
+      </div>
+      <div class="row header-actions">
+        <a class="pill link" href="https://github.com/YOUR-USERNAME/YOUR-REPO" target="_blank" rel="noopener" aria-label="View source on GitHub">GitHub ↗</a>
+        <div class="pill" id="buildTag">build: extremely questionable</div>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="hero">
+        <div class="grid">
+          <div>
+            <div class="row" style="justify-content:space-between">
+              <div class="badge" id="statusBadge">
+                <span class="dot" id="statusDot"></span>
+                <span id="statusText">Ready to scan for smart</span>
+              </div>
+              <div class="tiny">Tip: press <span class="kbd">R</span> to re-scan</div>
+            </div>
+
+            <div style="margin-top:12px; display:grid; gap:10px;">
+              <progress id="bar" value="0" max="100" aria-label="Scan progress"></progress>
+              <div class="row">
+                <button id="scanBtn" type="button">Run Smart Scan</button>
+                <button id="shareBtn" type="button" title="Copy link">Share this test</button>
+                <span class="tiny" id="hint">No data collected. We’re too dumb to do analytics. (FAQ lives in content/faq.json.)</span>
+              </div>
+            </div>
+
+            <div class="readout" id="readout" role="status" aria-live="polite" style="margin-top:14px;">
+              $ smart-detector --scan<br/>
+              <span style="opacity:.8">awaiting user input…</span>
+            </div>
+          </div>
+
+          <div class="readout" aria-label="Results">
+            <strong>RESULTS</strong><br/>
+            Smart detected: <strong id="smartPct">0%</strong><br/>
+            Confidence: <strong id="confidence">—</strong><br/>
+            Error code: <strong id="errCode">—</strong><br/>
+            Recommendation: <strong id="rec">—</strong><br/>
+            <br/>
+            <span style="opacity:.8">Note: detector is certified by the International Society of Making Stuff Up.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq">
+        <h2 style="margin:0 0 6px; font-size:18px;">FAQ (Frequently Avoided Questions)</h2>
+
+        <div id="faqList" aria-label="Frequently asked questions"></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Smart Detector™ • results may vary (they won’t)</span>
+      <span>Made with love and poor decisions.</span>
+    </footer>
+  </div>
+
+  <script defer src="assets/app.js"></script>
+</body>
+</html>

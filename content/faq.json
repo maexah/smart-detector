@@ -1,0 +1,45 @@
+{
+  "title": "FAQ (Frequently Avoided Questions)",
+  "items": [
+    {
+      "q": "Why did it fail to detect any smart?",
+      "a": "Because this is a highly advanced device with one setting: “nope.”\nAlso, your smart may be temporarily out for snacks.",
+      "open": true
+    },
+    {
+      "q": "Is the detector broken?",
+      "a": "No. It is operating within its intended specifications: confidently wrong, 24/7.",
+      "open": false
+    },
+    {
+      "q": "What should I do when I get an error?",
+      "a": "Step 1: Take a deep breath.\nStep 2: Say “kthxbye” to the idea of being smart today.\nStep 3: Acquire more smart (see below), then re-run the scan.",
+      "open": false
+    },
+    {
+      "q": "How do I get more smart?",
+      "a": "Recommended methods include: reading literally one (1) page of a book, drinking water,\nasking a friend “wait, how does that work?”, or Googling a thing instead of raw-dogging assumptions.",
+      "open": false
+    },
+    {
+      "q": "What does this result say about me as a stupid person?",
+      "a": "It says you have excellent taste in joke websites and a brave willingness to click buttons.\nBeing “not smart” here is a temporary vibe, not your destiny. Try again when your brain finishes buffering.",
+      "open": false
+    },
+    {
+      "q": "Can I appeal the results?",
+      "a": "Yes. Please submit your appeal by whispering it into the nearest houseplant.\nThe houseplant will forward it to our legal team (a raccoon in a tiny tie).",
+      "open": false
+    },
+    {
+      "q": "Does this site store my data?",
+      "a": "Nope. No accounts, no tracking, no cookies.\nWe couldn’t track you even if we tried. (…we tried.)",
+      "open": false
+    },
+    {
+      "q": "I think I got a false positive once.",
+      "a": "That was a reflection in your screen. Or a passing bird. Or hubris. Definitely not smart.",
+      "open": false
+    }
+  ]
+}
