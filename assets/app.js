@@ -132,8 +132,14 @@ async function loadFAQ() {
           if (i === 63) append(`[${nowStamp()}] warning: smart signal extremely faint (could be a breadcrumb)`);
           if (i === 88) append(`[${nowStamp()}] re-checking… (we don’t trust ourselves either)`);
 
-          // small jitter so it feels alive
-          await new Promise(r => setTimeout(r, 10 + Math.random() * 22));
+          // ~15 seconds total, with a tiny jitter so it feels "alive"
+          const TOTAL_MS = 15000;
+          const STEPS = 100;
+          const BASE_DELAY = TOTAL_MS / STEPS; // 150ms per step
+          const JITTER = 50; // +/- 25ms
+
+await new Promise(r => setTimeout(r, BASE_DELAY + (Math.random() * JITTER - JITTER / 2)));
+
         }
 
         const code = randPick(errorCodes);
