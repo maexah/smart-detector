@@ -148,7 +148,6 @@ async function loadFAQ() {
         append(`[${nowStamp()}] scan complete.`);
         append(`<strong style="color: var(--bad)">ERROR:</strong> ${code}`);
         append(`smart detected: <strong>0%</strong>`);
-        append(`<span style="opacity:.85">kthxbye</span>`);
 
         setStatus("failed");
         scanBtn.disabled = false;
