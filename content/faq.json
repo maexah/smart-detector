@@ -3,17 +3,17 @@
   "items": [
     {
       "q": "Why did it fail to detect any smart?",
-      "a": "Because this is a highly advanced device with one setting: “nope.”\nAlso, your smart may be temporarily out for snacks.",
+      "a": "Because this is a highly advanced device with one setting: “correct.”",
       "open": true
     },
     {
       "q": "Is the detector broken?",
-      "a": "No. It is operating within its intended specifications: confidently wrong, 24/7.",
+      "a": "No. It is operating within its intended specifications.",
       "open": false
     },
     {
       "q": "What should I do when I get an error?",
-      "a": "Step 1: Take a deep breath.\nStep 2: Say “kthxbye” to the idea of being smart today.\nStep 3: Acquire more smart (see below), then re-run the scan.",
+      "a": "Step 1: Take a deep breath.\nStep 2: Say “bye” to the idea of being smart today.\nStep 3: Acquire more smart (see below), then re-run the scan.",
       "open": false
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "q": "Does this site store my data?",
-      "a": "Nope. No accounts, no tracking, no cookies.\nWe couldn’t track you even if we tried. (…we tried.)",
+      "a": "Nope. No accounts, no tracking, no cookies.\nWe couldn’t track you even if we tried.",
       "open": false
     },
     {
