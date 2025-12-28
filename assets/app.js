@@ -68,7 +68,7 @@ async function loadFAQ() {
         "SMART_TIMEOUT: brain_buffering",
         "SMART_UNSUPPORTED_ON_THIS_DEVICE: human",
         "SMART_OVERHEATED: too_many_thoughts",
-        "SMART_PERMISSION_DENIED: ego_read_only"
+        "SMART_PERMISSION_DENIED: BRAINCELL_NO_ACCESS"
       ];
 
       const recs = [
@@ -112,7 +112,7 @@ async function loadFAQ() {
         setStatus("scanning");
         bar.value = 0;
 
-        // Always fail, but make it feel *dramatic*.
+                // Always fail, but make it feel *dramatic*.
         const steps = [
           "booting sensor array…",
           "warming up the Smart-O-Meter™…",
@@ -122,27 +122,58 @@ async function loadFAQ() {
           "running advanced algorithms (two hamsters)…"
         ];
 
-        readout.innerHTML = "$ smart-detector --scan<br/><span style='opacity:.8'>starting…</span>";
-        append(`[${nowStamp()}] ${steps[0]}`);
+        // Shuffle steps so we can show each one once (no repeats).
+        function shuffle(arr) {
+          const a = arr.slice();
+          for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+          }
+          return a;
+        }
 
-        for (let i = 1; i <= 100; i++) {
+        // ~15 seconds total, with a tiny jitter so it feels "alive"
+        const TOTAL_MS = 15000;
+        const STEPS = 100;
+        const BASE_DELAY = TOTAL_MS / STEPS; // 150ms per step
+        const JITTER = 50; // +/- 25ms
+
+        const uniqueSteps = shuffle(steps);
+
+        // Spread the steps evenly across the scan (each printed once).
+        const schedule = [];
+        for (let k = 1; k < uniqueSteps.length; k++) {
+          schedule.push(Math.round((k * STEPS) / uniqueSteps.length));
+        }
+        // Ensure the schedule is strictly increasing and stays within 1..STEPS-1
+        for (let s = 0; s < schedule.length; s++) {
+          schedule[s] = Math.max(1, Math.min(STEPS - 1, schedule[s]));
+          if (s > 0 && schedule[s] <= schedule[s - 1]) {
+            schedule[s] = Math.min(STEPS - 1, schedule[s - 1] + 1);
+          }
+        }
+        let scheduleIndex = 0;
+
+        readout.innerHTML = "$ smart-detector --scan<br/><span style='opacity:.8'>starting…</span>";
+        append(`[${nowStamp()}] ${uniqueSteps[0]}`);
+
+        for (let i = 1; i <= STEPS; i++) {
           bar.value = i;
 
-          if (i % 18 === 0) append(`[${nowStamp()}] ${randPick(steps)}`);
+          if (scheduleIndex < schedule.length && i === schedule[scheduleIndex]) {
+            append(`[${nowStamp()}] ${uniqueSteps[scheduleIndex + 1]}`);
+            scheduleIndex++;
+          }
+
           if (i === 63) append(`[${nowStamp()}] warning: smart signal extremely faint (could be a breadcrumb)`);
           if (i === 88) append(`[${nowStamp()}] re-checking… (we don’t trust ourselves either)`);
 
-          // ~15 seconds total, with a tiny jitter so it feels "alive"
-          const TOTAL_MS = 15000;
-          const STEPS = 100;
-          const BASE_DELAY = TOTAL_MS / STEPS; // 150ms per step
-          const JITTER = 50; // +/- 25ms
-
-await new Promise(r => setTimeout(r, BASE_DELAY + (Math.random() * JITTER - JITTER / 2)));
-
+          await new Promise(r =>
+            setTimeout(r, BASE_DELAY + (Math.random() * JITTER - JITTER / 2))
+          );
         }
 
-        const code = randPick(errorCodes);
+const code = randPick(errorCodes);
         const recommendation = randPick(recs);
 
         // The punchline: always zero.
